@@ -12,23 +12,21 @@ object KBD {
 
     //Retorna de imediato a tecla premida ou NONE se não há tecla premida. //apenas chamar quando DVal ativo
     fun getKey(): Char {
-        val key = when (HAL.readBits(15)) {
-            7 -> '0'
-            0 -> '1'
-            4 -> '2'
-            8 -> '3'
-            1 -> '4'
-            5 -> '5'
-            9 -> '6'
-            2 -> '7'
-            6 -> '8'
-            10 -> '9'
-            11 -> '#'
-            3 -> '*'
+        return when (HAL.readBits(143)) {
+            7+128 -> '0'
+            0+128 -> '1'
+            4+128 -> '2'
+            8+128 -> '3'
+            1+128 -> '4'
+            5+128 -> '5'
+            9+128 -> '6'
+            2+128 -> '7'
+            6+128 -> '8'
+            10+128 -> '9'
+            11+128 -> '#'
+            3+128 -> '*'
             else -> NONE.toChar()
         }
-        if(key!=NONE.toChar()){HAL.writeBits(128,1)}
-        return key
     }
 
     // Retorna quando a tecla for premida ou NONE após decorrido ‘timeout’ milisegundos.

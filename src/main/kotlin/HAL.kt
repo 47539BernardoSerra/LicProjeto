@@ -1,9 +1,10 @@
 import isel.leic.UsbPort
-import kotlin.math.*
 
 object HAL {
 // Virtualiza o acesso aosistemaUsbPort
 // Inicia a classe
+    private var output:Int = 0
+
     fun init() {
 
     }
@@ -22,18 +23,23 @@ object HAL {
 
     // Escreve nos bits representados por mask o valor de value
     fun writeBits(mask: Int, value: Int) {
-        val usbIn = UsbPort.`in`().inv()
-        UsbPort.`out`((((mask xor 255)and(usbIn)) or value).inv())
+        val newOut = (mask.inv() and output) or (mask and value)
+        UsbPort.`out`((newOut).inv())
+        output = newOut
 }
 
 // Coloca os bits representados por mask no valor lógico ‘1’
     fun setBits(mask: Int) {
-        val usbIn = UsbPort.`in`().inv()
-        UsbPort.out((mask or usbIn).inv())
+    val newOut = output or mask
+    UsbPort.`out`(newOut.inv())
+    output = newOut
 }
+
 // Coloca os bits representados por mask no valor lógico ‘0’
     fun clrBits(mask: Int) {
-        val usbIn = UsbPort.`in`().inv()
-        (UsbPort.`out`(((mask xor 255)and(usbIn)).inv()))
+    val newOut = (mask and 255).inv() and output
+        (UsbPort.`out`(newOut.inv()))
+    output = newOut
+
 }
 }
