@@ -8,6 +8,10 @@ import isel.leic.utils.Time
 fun main(args: Array<String>) {
     val usbIn = UsbPort.`in`()
     LCD.init()
-    LCD.write('f')
-
+    Time.sleep(1000)
+    print("ready")
+    LCD.write("ff aos 15")
+    //Time.sleep(1000)
+    //LCD.clear()
+    //LCD.write("Alga next semester")
 }

@@ -13,12 +13,12 @@ object LCD {
     private fun writeNibble(rs: Boolean, data: Int){
         //e,rs,outro
         val rsBit = if(rs) 16 else 0
-        val E_MASK = 0x20
-        val RS_MASK = 0x10
-        val D7 = 0x08
-        val D6 = 0x04
-        val D5 = 0x02
-        val D4 = 0x01
+        val E_MASK = 0x20 // 00100000
+        val RS_MASK = 0x10 //00010000
+        val D7 = 0x08 //00001000
+        val D6 = 0x04 //00000100
+        val D5 = 0x02 //00000010
+        val D4 = 0x01 // 00000001
         HAL.writeBits(RS_MASK,rsBit)
         Time.sleep(5)
         HAL.writeBits(E_MASK+RS_MASK,rsBit + E_MASK)
@@ -30,9 +30,10 @@ object LCD {
 
     // Escreve um byte de comando/dados no LCDprivate
     private fun writeByte(rs: Boolean, data: Int){
-        writeNibble(rs,data and 0xF0)
+        writeNibble(rs,data shr 4)
         Time.sleep(5)
-        writeNibble(rs,(data shl 4) and 0xF0)
+        writeNibble(rs,(data and 0x0F))
+            //Time.sleep(100)
     }
 
     // Escreve um comando no LCDprivate
@@ -68,13 +69,22 @@ object LCD {
 
     // Escreve uma string na posição corrente.
     fun write(text: String){
-        for(char in text){
-            write(char)
+        var i = 0
+        val shortest = if(text.length<16)text.length-1 else 15
+        for (i in 0..shortest){
+            LCD.write(text[i])
+        }
+        cursor(2,1)
+        if(shortest==15 && text.length-1!=15){
+            for(i in shortest..text.length){
+                LCD.write(text[i])
+            }
         }
     }
 
     // Envia comando para posicionar cursor (‘line’:0..LINES-1 , ‘column’:0..COLS-1)
     fun cursor(line: Int,column: Int){
+        //não funcemina bem
         writeCMD(2)
         val totalShifts = line*column
         if(totalShifts>0){
