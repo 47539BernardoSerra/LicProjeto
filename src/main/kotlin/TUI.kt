@@ -13,7 +13,8 @@ object TUI {
         HAL.clrBits(128)
     }
 
-    fun centerString(text : String) {
-
+    fun centerString(text : String, line : Int) {
+        val space = if(text.length < 15) (16 - text.length - 1) / 2 else 0
+        LCD.cursor(line, space)
     }
 }

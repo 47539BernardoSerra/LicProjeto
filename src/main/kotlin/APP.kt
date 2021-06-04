@@ -45,7 +45,13 @@ object APP {
         Time.sleep(50)
         if(pinn.toInt() == pin.toInt()){
             LCD.clear()
-            LCD.write("    Bem Vindo    $name")
+            TUI.centerString("Bem Vindo", 0)
+            LCD.write("Bem Vindo")
+            TUI.centerString(name, 1)
+            LCD.write(name)
+            Time.sleep(50)
+            Door.open(2)
+            Door.close(2)
         }
     }
 }
