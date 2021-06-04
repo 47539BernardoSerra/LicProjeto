@@ -1,7 +1,5 @@
-import isel.leic.UsbPort
 import isel.leic.utils.Time
-import java.lang.Integer
-import java.util.concurrent.TimeoutException
+import java.awt.Cursor
 
 object LCD {
     // Escreve no LCD usando a interface a 4bits.
@@ -69,29 +67,20 @@ object LCD {
 
     // Escreve uma string na posição corrente.
     fun write(text: String){
-        var i = 0
-        val shortest = if(text.length<16)text.length-1 else 15
-        for (i in 0..shortest){
-            LCD.write(text[i])
+    for(i in 0..if(text.length - 1 > 15) 15 else text.length - 1) {
+            write(text[i])
         }
-        cursor(2,1)
-        if(shortest==15 && text.length-1!=15){
-            for(i in shortest..text.length){
-                LCD.write(text[i])
+        if(text.length - 1 > 15) {
+            cursor(1, 0)
+            for (i in 16 until text.length) {
+                write(text[i])
             }
         }
     }
 
     // Envia comando para posicionar cursor (‘line’:0..LINES-1 , ‘column’:0..COLS-1)
     fun cursor(line: Int,column: Int){
-        //não funcemina bem
-        writeCMD(2)
-        val totalShifts = line*column
-        if(totalShifts>0){
-            for(i in 1..totalShifts){
-                writeCMD(16)
-            }
-        }
+        writeCMD(128 or (column and 63) or if (line == 1) 64 else 0)
     }
 
     // Envia comando para limpar o ecrã e posicionar o cursor em (0,0)

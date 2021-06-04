@@ -1,0 +1,14 @@
+0;182;Homer Simpson;0;1621334391070
+1;182;Marge Simpson;0
+2;182;Bart Simpson;0
+3;182;Lisa Simpson;0
+4;182;Maggie Simpson;0
+5;182;Abraham Simpson;0
+6;182;Barney Gumble;0
+7;182;Edna Krabappel;0
+8;182;Janey Powell;0
+9;182;Jasper Beardly;0
+10;182;Kent Brockman;0
+11;182;Mr. Burns;0
+12;182;Moe Szyslak;0
+13;182;Nahasapeemapetilon;0
