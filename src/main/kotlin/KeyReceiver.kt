@@ -2,7 +2,7 @@ object KeyReceiver {
     fun init(){
     }
 
-    fun rcv():Int{
+   // fun rcv():Int{
 
-    }
+    //}
 }

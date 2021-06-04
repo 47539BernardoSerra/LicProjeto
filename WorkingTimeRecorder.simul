@@ -1,10 +1,10 @@
 ## --- Additional packages with Hardware to Simulator
 # for Modules used in Working Time Recorder
-package workingtimerecorder.simul
+package workingtimerecorder.simul    
 UsbPort = UsbPort
 
 # Generic modules to activate from Simulator
-kbd  = Keyboard("123456789*0#",4,3,1)
+kbd  = Keyboard("123456789*0#",4,3,0)
 lcd  = LCD
 m    = Switch ; "manut" ; setLabel("M")
 
@@ -27,7 +27,7 @@ kbd.val -> kb.DAV
 #Key buffer
 kb.DAC -> kbd.ack
 kb.K[0-3] -> UsbPort.I[0-3]
-kb.Dval -> UsbPort.I4
+kb.Dval -> UsbPort.I7
 UsbPort.O7 -> kb.ACK
 
 # --------------------------------------
@@ -43,7 +43,7 @@ UsbPort.O5 -> lcd.e
 UsbPort.O6  -> dc.wr
 
 # V3 | V2 | V1 | V0 | OC
-UsbPort.O[0-3] -> dc.I[0-4]
+UsbPort.O[0-4] -> dc.I[0-4]
 
 # OC | V3 | V2 | V1 | V0
 #UsbPort.O[0-3] -> dc.I[1-4]

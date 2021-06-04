@@ -7,11 +7,23 @@ import isel.leic.utils.Time
 
 fun main(args: Array<String>) {
     val usbIn = UsbPort.`in`()
-    LCD.init()
+    do{
+        println(KBD.getKey())
+    }while (true)
+
+    /*LCD.init()
     Time.sleep(1000)
     print("ready")
-    LCD.write("ff aos 15")
-    //Time.sleep(1000)
-    //LCD.clear()
-    //LCD.write("Alga next semester")
+    LCD.write("Alga next semester")
+    Time.sleep(500)
+    LCD.cursor(1, 0)
+    LCD.write("Alga")
+    APP.app()
+    Time.sleep(1000)
+    LCD.clear()
+    LCD.write("Alga next semester")
+    Time.sleep(1000)
+    LCD.clear()
+    LCD.write("12345678912345671234567891234567")
+    */
 }

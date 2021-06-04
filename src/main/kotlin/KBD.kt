@@ -12,6 +12,7 @@ object KBD {
 
     //Retorna de imediato a tecla premida ou NONE se não há tecla premida. //apenas chamar quando DVal ativo
     fun getKey(): Char {
+
         return when (HAL.readBits(143)) {
             7+128 -> '0'
             0+128 -> '1'
