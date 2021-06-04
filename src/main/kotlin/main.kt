@@ -1,5 +1,6 @@
 import isel.leic.UsbPort
 import isel.leic.utils.Time
+import java.io.File
 
 //usbIn retorna um valor entre 0 a 255 bits representando o valor dos inputs do UsbPort (Binary->Decimal)
 //usbOut aceita um valor em hexadecimal representando o valor dos outputs do programa (hexadecimal->Binary)
@@ -7,14 +8,13 @@ import isel.leic.utils.Time
 
 fun main(args: Array<String>) {
     val usbIn = UsbPort.`in`()
-    do{
-        println(KBD.getKey())
-    }while (true)
 
-    /*LCD.init()
+
+    LCD.init()
     Time.sleep(1000)
     print("ready")
-    LCD.write("Alga next semester")
+    APP.app()
+    /*LCD.write("Alga next semester")
     Time.sleep(500)
     LCD.cursor(1, 0)
     LCD.write("Alga")
