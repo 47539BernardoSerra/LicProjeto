@@ -51,7 +51,6 @@ object APP {
             LCD.write(name)
             Time.sleep(50)
             Door.open(2)
-            Door.close(2)
         }
     }
 }
