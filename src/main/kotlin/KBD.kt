@@ -40,6 +40,7 @@ object KBD {
             }
             currentTime = Time.getTimeInMillis()
         } while (currentTime - startTime < timeout)
+
         return pressedKey
     }
 }

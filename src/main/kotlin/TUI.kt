@@ -55,10 +55,8 @@ object TUI {
 
     fun getKeyAndWaitingKey(){
         KBD.getKey()
-        while (!HAL.isBit(128)){
-            KBD.waitKey(1L)
-        }
+        while (HAL.isBit(128)){}
         ack()
-
+        KBD.waitKey(1L)
     }
 }

@@ -37,15 +37,15 @@ object APP {
         //Log.writeLog(uin.toInt(), name)
 
         LCD.clear()
-        if(true) {
-            TUI.centerStringAndWrite("Entrance " + TUI.getTime(), 0)
+        if(Log.entering(uin) == "true") {
+            TUI.centerStringAndWrite("Entrance  " + TUI.getTime(), 0)
             TUI.centerStringAndWrite("Exit     ??:??", 1)
         }
         else{
-            TUI.centerStringAndWrite("Entrance " + Log.lastRegisterTime(), 0)
+            TUI.centerStringAndWrite("Entrance    " + Log.lastRegisterTime(uin), 0)
             TUI.centerStringAndWrite("Exit     " + TUI.getTime(), 1)
         }
-        Time.sleep(3000)
+        Time.sleep(6000)
         LCD.clear()
         TUI.centerStringAndWrite(name, 0)
         TUI.centerStringAndWrite("Door is Opening", 1)
