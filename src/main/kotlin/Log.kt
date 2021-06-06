@@ -39,7 +39,7 @@ object Log {
     private fun inside(arrow: String): Boolean = arrow == "->"
 
     //Transforma o booleano na flecha correspondente para logs
-    private fun boolToArrow(boolean: Boolean?): String = if (boolean == true) "->" else "<-"
+    private fun boolToArrow(boolean: Boolean?): String = if (boolean == false) "->" else "<-"
 
     //Escreve nos logs
     fun writeLog(uin: Int, name: String) {

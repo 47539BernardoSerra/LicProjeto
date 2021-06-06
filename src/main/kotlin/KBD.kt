@@ -35,12 +35,12 @@ object KBD {
         var pressedKey: Char
         do {
             pressedKey = getKey()
-            if (pressedKey.code != "!".toInt()) {
+            if (pressedKey != '!') {
                 break
             }
             currentTime = Time.getTimeInMillis()
         } while (currentTime - startTime < timeout)
-
+        TUI.ack()
         return pressedKey
     }
 }
