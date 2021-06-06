@@ -13,8 +13,6 @@ object Log {
     //Intializa as listas usadas, mediante o ficheiro prexistente de LOG. Para correr optimamente, é preferivel que se guardaem os logs à parte e se use um ficheiro em branco cada vez que se recomeçao programa,
     //no entanto, em caso de crash ou erro, este pode ser começado com os logs do dias graças a isto.
 
-    //BENIS
-
     fun init() {
 
         var bfLog = File(LOG_FILE).bufferedReader()
