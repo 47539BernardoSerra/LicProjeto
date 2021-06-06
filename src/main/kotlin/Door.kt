@@ -9,6 +9,7 @@ object Door {
         HAL.setBits(64)
         Time.sleep(100)
         HAL.clrBits(64)
+        while (isFinished()){}
     }
     // Envia comando paraabrir a porta, indicando a velocidade
     fun open(speed: Int){
