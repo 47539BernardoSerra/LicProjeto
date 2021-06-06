@@ -5,13 +5,13 @@ import java.io.File
 object APP {
     /* waiting key */
     fun app() {
-        LCD.clear()
+        TUI.lcdClear()
         var uin = "0"
         val list = File("USERS.txt").readLines()
         do {
-            TUI.LCDclear()
+            TUI.lcdClear()
             //Escreve no LCD o dia, horas  e pergunta o UIN
-            TUI.LCDwriteAndPlaceCursor(TUI.getLocalDateTime() + "UIN:???", 1, 4)
+            TUI.lcdWriteAndPlaceCursor(TUI.getLocalDateTime() + "UIN:???", 1, 4)
             Time.sleep(100)
             //Escreve  a tecla presionada e guarda o uin
             uin = TUI.writeAndSaveUin()
@@ -19,8 +19,8 @@ object APP {
             val pinUsersFile = list[uin.toInt()].split(";")[3]
             // Pergunta o Pin
             Time.sleep(100)
-            TUI.LCDcursor(1, 0)
-            TUI.LCDwriteAndPlaceCursor("PIN:????", 1, 4)
+            TUI.lcdCursor(1, 0)
+            TUI.lcdWriteAndPlaceCursor("PIN:????", 1, 4)
             //Escreve  a tecla presionada e guarda o Pin
             val pinWritten = TUI.writeAndSavePin()
             Time.sleep(100)
@@ -28,12 +28,12 @@ object APP {
         } while (pinWritten.toInt() != pinUsersFile.toInt())
         val name = list[uin.toInt()].split(";")[2]
         //Escreve hello e o nome do Uin
-        TUI.LCDclear()
+        TUI.lcdClear()
         TUI.centerStringAndWrite("Hello", 0)
         TUI.centerStringAndWrite(name, 1)
         Time.sleep(1500)
         //Verifica se é uma entrada ou é uma saida e escreve o devido texto no LCD
-        TUI.LCDclear()
+        TUI.lcdClear()
         if(Log.entering(uin) == "->") {
             TUI.centerStringAndWrite("Entrance  " + TUI.getTime(), 0)
             TUI.centerStringAndWrite("Exit      ??:??", 1)
@@ -46,7 +46,7 @@ object APP {
         Log.writeLog(uin.toInt(), name)
         //Abertura da porta
         Time.sleep(3000)
-        TUI.LCDclear()
+        TUI.lcdClear()
         TUI.centerStringAndWrite(name, 0)
         TUI.centerStringAndWrite("Door is Opening", 1)
         Door.open(3)

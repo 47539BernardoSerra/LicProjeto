@@ -13,9 +13,9 @@ object TUI {
     //Ack para premitir a entrada de nova tecla
     fun ack() {
         Time.sleep(10)
-        HAL.setBits(128)
+        KBD.halSetBits(128)
         Time.sleep(30)
-        HAL.clrBits(128)
+        KBD.halClrBits(128)
     }
     //Centra a String no meio do LCD e escreve no mesmo
     fun centerStringAndWrite(text : String, line : Int) {
@@ -54,16 +54,16 @@ object TUI {
         return pin
     }
 
-    fun LCDclear(){
+    fun lcdClear(){
         LCD.clear()
     }
 
-    fun LCDwriteAndPlaceCursor(text: String, line: Int, col : Int){
+    fun lcdWriteAndPlaceCursor(text: String, line: Int, col : Int){
         LCD.write(text)
         LCD.cursor(line, col)
     }
 
-    fun LCDcursor(line: Int, col : Int){
+    fun lcdCursor(line: Int, col : Int){
         LCD.cursor(line, col)
     }
 }

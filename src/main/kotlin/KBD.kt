@@ -9,6 +9,14 @@ object KBD {
     fun init() {
     }
 
+    fun halClrBits(int: Int){
+        HAL.clrBits(int)
+    }
+
+    fun halSetBits(int: Int){
+        HAL.setBits(int)
+    }
+
     //Retorna de imediato a tecla premida ou NONE se não há tecla premida. //apenas chamar quando DVal ativo
     fun getKey(): Char {
         return when (HAL.readBits(143)) {
