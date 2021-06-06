@@ -2,3 +2,6 @@
 18/05/2021 11:39 -> _0:Homer Simpson
 19/03/2021 10:14 <- _1:Homer Simpson
 18/05/2021 11:39 -> _1:Homer Simpson
+06/06/2021 17:01 <- _0:Homer Simpson
+06/06/2021 18:00 -> _0:Homer Simpson
+06/06/2021 18:03 <- _0:Homer Simpson

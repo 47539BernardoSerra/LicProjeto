@@ -13,6 +13,7 @@ object APP {
     */
     fun app() {
         LCD.init()
+        Log.init()
         var uin = "0"
         val list = File("USERS.txt").readLines()
         do {

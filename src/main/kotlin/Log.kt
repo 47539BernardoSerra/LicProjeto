@@ -2,17 +2,44 @@ import java.io.File
 
 object Log {
 
+    private const val FILE_NAME="LOG.txt"
 
-    fun writeLog(uin: Int, name: String) : String {
-        val a: List<String> = readLog().filter { it.split("_").contains("$uin:$name") }
-        val inout = if (a.isNotEmpty()) a.last().split(" ")[2] else "->"
-        val arrow = if (inout == "->") "<-" else "->"
+    private var listOfInside = mutableMapOf<String,Boolean>()
+
+    fun init() {
+
+        var bfLog = File(FILE_NAME).bufferedReader()
+
+        do {
+            val currentLine = bfLog.readLine()
+
+            val id:String = currentLine.split("_")[1][0].toString()
+
+            val inside = inside(currentLine.split(" ")[2])
+
+            if  (!listOfInside.containsKey(id)){
+                listOfInside[id]=inside
+            }
+            else if (listOfInside.containsKey(id) && listOfInside[id] != inside) {
+                listOfInside[id] = inside
+            }
+
+        }while(bfLog.ready())
+    }
+
+    private fun inside(arrow:String):Boolean = arrow == "->"
+    private fun boolToArrow(boolean: Boolean?):String = if(boolean == true) "->" else "<-"
+
+    fun writeLog(uin: Int, name: String) {
+        println(listOfInside[uin.toString()])
+        val idIn = listOfInside[uin.toString()]
+        val arrow = boolToArrow(!idIn!!)
+
         val toWrite = TUI.getLocalDateTime() + " $arrow _$uin:$name"
         File("LOG.txt").appendText("\n")
         File("LOG.txt").appendText(toWrite)
-        return a.last().split(" ")[1]
     }
 
-    fun readLog() = File("LOG.txt").readLines()
+    private fun readLog() = File(FILE_NAME).readLines()
 
 }
