@@ -12,7 +12,7 @@ object KBD {
 
     //Retorna de imediato a tecla premida ou NONE se não há tecla premida. //apenas chamar quando DVal ativo
     fun getKey(): Char {
-
+        //falta qualquer cena do ack
         return when (HAL.readBits(143)) {
             7+128 -> '0'
             0+128 -> '1'
@@ -26,7 +26,7 @@ object KBD {
             10+128 -> '9'
             11+128 -> '#'
             3+128 -> '*'
-            else -> NONE.toChar()
+            else -> '!'
         }
     }
 
