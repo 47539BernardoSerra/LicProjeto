@@ -7,12 +7,10 @@ object KBD {
 
     // Inicia a classe
     fun init() {
-
     }
 
     //Retorna de imediato a tecla premida ou NONE se não há tecla premida. //apenas chamar quando DVal ativo
     fun getKey(): Char {
-        //falta qualquer cena do ack
         return when (HAL.readBits(143)) {
             7+128 -> '0'
             0+128 -> '1'
@@ -33,11 +31,13 @@ object KBD {
     // Retorna quando a tecla for premida ou NONE após decorrido ‘timeout’ milisegundos.
     fun waitKey(timeout: Long): Char {
         val startTime = Time.getTimeInMillis()
-        var currentTime : Long
-        var pressedKey : Char
+        var currentTime: Long
+        var pressedKey: Char
         do {
             pressedKey = getKey()
-            if(pressedKey!=NONE.toChar()){break}
+            if (pressedKey.code != "!".toInt()) {
+                break
+            }
             currentTime = Time.getTimeInMillis()
         } while (currentTime - startTime < timeout)
         return pressedKey

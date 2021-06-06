@@ -52,4 +52,13 @@ object TUI {
         }
         return pin
     }
+
+    fun getKeyAndWaitingKey(){
+        KBD.getKey()
+        while (!HAL.isBit(128)){
+            KBD.waitKey(1L)
+        }
+        ack()
+
+    }
 }
