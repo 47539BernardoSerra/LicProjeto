@@ -51,9 +51,9 @@ object Log {
     }
 
     //Diz se o user está a entrar ou a sair com a flecha
-    fun entering(uin: String) : String = if(listOfInside[uin]!=null) boolToArrow(listOfInside[uin]!!) else "NONE"
+    fun entering(uin: String) : String = if(listOfInside[uin.toInt().toString()]!=null) boolToArrow(listOfInside[uin.toInt().toString()]!!) else "NONE"
 
     //Diz a ultima vez que um determinado user passou as portas.
-    fun lastRegisterTime(uin: String):String = if(listOfTime[uin]!=null) listOfTime[uin]!! else "NONE"
+    fun lastRegisterTime(uin: String):String = if(listOfTime[uin.toInt().toString()]!=null) listOfTime[uin.toInt().toString()]!! else "NONE"
 
 }
