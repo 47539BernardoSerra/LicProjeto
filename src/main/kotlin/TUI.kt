@@ -54,4 +54,16 @@ object TUI {
         return pin
     }
 
+    fun LCDclear(){
+        LCD.clear()
+    }
+
+    fun LCDwriteAndPlaceCursor(text: String, line: Int, col : Int){
+        LCD.write(text)
+        LCD.cursor(line, col)
+    }
+
+    fun LCDcursor(line: Int, col : Int){
+        LCD.cursor(line, col)
+    }
 }
