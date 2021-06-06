@@ -4,16 +4,12 @@ import java.io.File
 
 object APP {
     /*
-        os logs nao estao a funcionar muito bem
         falta meter as horas a que ele entrou e as que ele saiu apartir do log
-        se o iun falhar voltar atras
-        cena do m que nao sei o que é
-        saber quando a porta esta aberta e quando é que ela esta fechada
-
+        cena do m Fora de servico
+        waiting key
     */
     fun app() {
-        LCD.init()
-        Log.init()
+        LCD.clear()
         var uin = "0"
         val list = File("USERS.txt").readLines()
         do {
@@ -38,25 +34,23 @@ object APP {
         TUI.centerStringAndWrite(name, 1)
         Time.sleep(1000)
 
-        Log.writeLog(uin.toInt(), name)
+        //Log.writeLog(uin.toInt(), name)
 
         LCD.clear()
-        LCD.write("Entrance " + TUI.getTime())
-
-
-
-
-
-
-
-
-
-        Time.sleep(100)
+        if(true) {
+            TUI.centerStringAndWrite("Entrance " + TUI.getTime(), 0)
+            TUI.centerStringAndWrite("Exit     ??:??", 1)
+        }
+        else{
+            TUI.centerStringAndWrite("Entrance " + Log.lastRegisterTime(), 0)
+            TUI.centerStringAndWrite("Exit     " + TUI.getTime(), 1)
+        }
+        Time.sleep(3000)
+        LCD.clear()
         TUI.centerStringAndWrite(name, 0)
-        Log.writeLog(uin.toInt(), name)
         TUI.centerStringAndWrite("Door is Opening", 1)
         Door.open(3)
-        Time.sleep(1000)
+        Time.sleep(2000)
         TUI.centerStringAndWrite("Door is Closing", 1)
         Door.close(1)
     }
