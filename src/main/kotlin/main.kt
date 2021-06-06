@@ -8,21 +8,5 @@ import java.io.File
 
 fun main(args: Array<String>) {
     val usbIn = UsbPort.`in`()
-
-    LCD.init()
-    Time.sleep(1000)
-    print("ready")
     APP.app()
-    /*LCD.write("Alga next semester")
-    Time.sleep(500)
-    LCD.cursor(1, 0)
-    LCD.write("Alga")
-    APP.app()
-    Time.sleep(1000)
-    LCD.clear()
-    LCD.write("Alga next semester")
-    Time.sleep(1000)
-    LCD.clear()
-    LCD.write("12345678912345671234567891234567")
-    */
 }
