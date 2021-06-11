@@ -2,10 +2,10 @@ import isel.leic.utils.Time
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-const val UIN = 3
-const val PIN = 4
-
 object TUI {
+    private const val UIN = 3
+    private const val PIN = 4
+
     //Entrega a Data e a Hora
     fun getLocalDateTime() : String = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))
     //Entrega a Hora

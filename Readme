@@ -1,1 +1,14 @@
-// As saidas no log nao estao bem, quando o gajo sai é guardo tbm como saida e ao contrario tbm
+TODO:
+Fazer a classe M(Out Of Service)
+Fazer o serial Receiver
+Fazer os users
+Fazer o File Access
+Fazer o Key Receiver
+
+
+TOFIX:
+Log não usa File Access
+Tirar as funções javardonas do KBD
+
+
+KNOWN BUGS:
