@@ -4,6 +4,7 @@ import isel.leic.utils.Time
 object KBD {
     // Ler teclas. Métodos retornam ‘0’..’9’,’#’,’*’ ou NONE.
     const val NONE = 0;
+    private const val SERIAL = false;
 
     // Inicia a classe
     fun init() {
@@ -19,6 +20,18 @@ object KBD {
 
     //Retorna de imediato a tecla premida ou NONE se não há tecla premida. //apenas chamar quando DVal ativo
     fun getKey(): Char {
+        return when(SERIAL){
+            true-> getParallelKey()
+            else-> getKeySerial()
+        }
+    }
+
+    private fun getKeySerial() : Char{
+
+        return 'a'
+    }
+
+    private fun getParallelKey() : Char{
         return when (HAL.readBits(143)) {
             7+128 -> '0'
             0+128 -> '1'

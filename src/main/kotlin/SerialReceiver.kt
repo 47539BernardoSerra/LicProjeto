@@ -1,4 +1,4 @@
-object KeyReceiver {
+object SerialReceiver {
     fun init(){
     }
 

@@ -2,7 +2,7 @@ TODO:
 Fazer a classe M(Out Of Service)//On it
 Fazer os users
 Fazer o File Access
-Fazer o Key Receiver
+Fazer o Serial Receiver
 
 
 TOFIX:
@@ -13,7 +13,4 @@ Tirar as funções javardonas do KBD
 KNOWN BUGS:
 
 Classe M DEV:
-
-KBD tem, publicos, getKey() e waitKey(), separar o getKey em 2 metodos privados, getKeyParallel() GetKeySerial()(Chama as merdas do key receiver
-getKey passa a chamar o parallel se constante for false e chama o outro se a cosntante serial for true
 
