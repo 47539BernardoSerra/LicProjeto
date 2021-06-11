@@ -27,8 +27,21 @@ object KBD {
     }
 
     private fun getKeySerial() : Char{
-
-        return 'a'
+        return when (SerialReceiver.rcv()) {
+            7+128 -> '0'
+            0+128 -> '1'
+            4+128 -> '2'
+            8+128 -> '3'
+            1+128 -> '4'
+            5+128 -> '5'
+            9+128 -> '6'
+            2+128 -> '7'
+            6+128 -> '8'
+            10+128 -> '9'
+            11+128 -> '#'
+            3+128 -> '*'
+            else -> '!'
+        }
     }
 
     private fun getParallelKey() : Char{
