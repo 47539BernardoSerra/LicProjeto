@@ -4,7 +4,7 @@ package workingtimerecorder.simul
 UsbPort = UsbPort
 
 # Generic modules to activate from Simulator
-kbd  = Keyboard("123456789*0#",4,3,1)
+kbd  = Keyboard("123456789*0#",4,3,0)
 lcd  = LCD
 m    = Switch ; "manut" ; setLabel("M")
 
