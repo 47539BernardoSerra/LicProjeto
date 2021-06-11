@@ -1,2 +1,6 @@
 object M {
+    fun init(){
+
+    }
+
 }
