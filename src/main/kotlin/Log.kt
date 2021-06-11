@@ -1,5 +1,3 @@
-import java.io.File
-
 object Log {
 
     //o Log regista num ficheiro a posicao dos users (se entraram ou asiram da ultima vez) e horas.
@@ -15,10 +13,10 @@ object Log {
 
     fun init() {
 
-        var bfLog = File(LOG_FILE).bufferedReader()
+        var reader = FileAccess.createReader(LOG_FILE)
 
         do {
-            val currentLine = bfLog.readLine()
+            val currentLine = reader.readLine()
 
             if(currentLine.isNotEmpty()){
 
@@ -32,7 +30,7 @@ object Log {
                 listOfTime[id] = time
             }
 
-        } while (bfLog.ready())
+        } while (reader.ready())
     }
     //Transforma a arrow guardada em logs no booleano para saber se o user setá dentro ou fora das portas.
 
@@ -47,7 +45,7 @@ object Log {
         val idIn = listOfInside[uin.toString()]
         val arrow = boolToArrow(!idIn!!)
         val toWrite = TUI.getLocalDateTime() + " $arrow _$uin:$name"
-        File(LOG_FILE).appendText("\n"+toWrite)
+        FileAccess.writeText("\n"+toWrite, LOG_FILE)
     }
 
     //Diz se o user está a entrar ou a sair com a flecha
