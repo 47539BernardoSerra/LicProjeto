@@ -58,6 +58,11 @@ object TUI {
         LCD.clear()
     }
 
+    fun writeOnCursor(text: String,line: Int){
+        LCD.cursor(line,0)
+        LCD.write(text)
+    }
+
     fun lcdWriteAndPlaceCursor(text: String, line: Int, col : Int){
         LCD.write(text)
         LCD.cursor(line, col)

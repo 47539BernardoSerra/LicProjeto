@@ -11,7 +11,7 @@ fun main(args: Array<String>) {
     LCD.init()
     Log.init()
     while(true) {
-        APP.app()
+        M.maintenance()
     }
 
 }

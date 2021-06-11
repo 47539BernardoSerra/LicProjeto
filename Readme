@@ -8,6 +8,7 @@ Fazer o Serial Receiver
 TOFIX:
 Log não usa File Access
 Tirar as funções javardonas do KBD
+Tirar as funções javardonas do TUI
 
 
 KNOWN BUGS:

@@ -9,6 +9,6 @@ object SerialReceiver {
            val shiftedBit = currentBit shl i
            finalBits = finalBits and shiftedBit
        }
-       return finalBits and HAL.readBits(128) shl 7
+       return finalBits and HAL.readBits(128)
    }
 }
