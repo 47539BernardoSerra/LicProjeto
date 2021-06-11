@@ -8,6 +8,7 @@ import java.io.File
 
 fun main(args: Array<String>) {
     val usbIn = UsbPort.`in`()
+    Users.init()
     LCD.init()
     Log.init()
     while(true) {

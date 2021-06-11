@@ -12,6 +12,8 @@ Tirar as funções javardonas do TUI
 
 
 KNOWN BUGS:
+    A escrever os users, se estivermos a usar um id que esteja "no meio", ele fica em baixo, exmp:1,3,2.
+    Possivel Solução:Rescrever o User file por inteiro para desfragmentar. Solução:Criar um array e dar sort, para saber que users estão available
 
 Classe M DEV:
 Falta adicionar Users, dar del, precisa da classe Users up and running

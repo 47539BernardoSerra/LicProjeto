@@ -1,8 +1,5 @@
 import isel.leic.utils.Time
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.pow
 
 object M {
     fun init(){
@@ -39,8 +36,45 @@ object M {
         }
     }
 
-    fun addUser(){
+    private fun addUser(){
+        var name : String
+        var pin : Int
+        do{
+            println("Username?")
+            name = readLine()!!
+            if(name.isEmpty()){
+                println("Command aborted")
+                return
+            }
+            if(name.length<=16){
+                break;
+            }
+            println("$name has more than 16 characters")
+        }while(true)
 
+        do{
+            println("PIN?")
+            val line = readLine()!!
+            if(name.isEmpty()){
+                println("Command aborted")
+                return
+            }
+            try{
+                pin= line.toInt()
+                if(pin !in 0..9999) {
+                    throw NumberFormatException()
+                }
+                break
+            } catch(e: NumberFormatException){
+                println("Invalid PIN, length must be 4 and it must be a number")
+            }
+        }while(true)
+        val user = Users.addUser(name,pin)
+        if (user == null) {
+            println("User not created, insufficient memory.")
+        } else {
+            println("Adding user $user")
+        }
     }
 
     fun delUser(){
