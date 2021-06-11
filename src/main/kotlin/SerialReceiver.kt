@@ -2,7 +2,7 @@ object SerialReceiver {
     fun init(){
     }
 
-   // fun rcv():Int{
-
-    //}
+   fun rcv():Int{
+    for(i in )
+    }
 }
