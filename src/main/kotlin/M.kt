@@ -1,7 +1,11 @@
 import isel.leic.utils.Time
-import java.util.*
 
 object M {
+
+    const val USERS_FILE = "USERS.txt"
+
+    const val LOG_FILE = "LOG.txt"
+
     fun init(){
 
     }
@@ -75,11 +79,63 @@ object M {
         } else {
             println("Adding user $user")
         }
+        defragUsers()
     }
 
-    fun delUser(){
-
+    private fun delUser(){
+        var deleteLine: List<String>? = null
+        var lineNumber = 0
+        println("UIN?")
+        val uin : String = readLine()!!
+        if(uin.isEmpty()){
+            println("Command aborted")
+            return
+        }
+        val reader = FileAccess.createReader(USERS_FILE)
+        while(reader.ready()){
+            val currentLine = reader.readLine().split(";")
+            if(currentLine[0]==uin){
+                    deleteLine = currentLine
+            }
+            lineNumber++
+        }
+        if(deleteLine==null){
+            println("UID not found")
+            return
+        }
+        println("Remove user "+deleteLine[0]+":"+deleteLine[2])
+        println("Y/N")
+        val ans = readLine()!!
+        if(ans.lowercase()!="y"){
+            println("Command aborted")
+            return
+        }
+        Users.removeUser(uin)
+        println("User deleted "+deleteLine[0]+":"+deleteLine[2])
     }
+
+    private fun defragUsers(){
+        val reader = FileAccess.createReader(USERS_FILE)
+        var listOfUsers = mutableListOf<String>()
+        while(reader.ready()){
+            listOfUsers.add(reader.readLine().toString())
+        }
+        for (pass in 0 until (listOfUsers.size - 1)) {
+            for (currentPosition in 0 until (listOfUsers.size - 1)) {
+                val currentValue = listOfUsers[currentPosition].split(";")[0]
+                val futureValue = listOfUsers[currentPosition+1].split(";")[0]
+                if (currentValue > futureValue) {
+                    listOfUsers[currentPosition] = listOfUsers[currentPosition+1]
+                    listOfUsers[currentPosition + 1] = listOfUsers[currentPosition]
+                }
+            }
+        }
+        FileAccess.clearFile(USERS_FILE)
+        for (i in 0 until listOfUsers.size) {
+            FileAccess.writeText(listOfUsers[i], USERS_FILE)
+        }
+    }
+
     fun lst(){
 
     }

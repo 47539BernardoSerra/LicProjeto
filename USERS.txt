@@ -4,11 +4,10 @@
 3;0;Lisa Simpson;0
 4;0;Maggie Simpson;0
 5;0;Abraham Simpson;0
-6;0;Barney Gumble;0
+6;0;Barney;0
 7;0;Edna Krabappel;0
 8;0;Janey Powell;0
 9;0;Jasper Beardly;0
 10;0;Kent Brockman;0
 11;0;Mr. Burns;0
 12;0;Moe Szyslak;0
-13;0;Nahasapeemapetilon;0

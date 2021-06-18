@@ -4,7 +4,7 @@ import isel.leic.utils.Time
 object KBD {
     // Ler teclas. Métodos retornam ‘0’..’9’,’#’,’*’ ou NONE.
     const val NONE = 0;
-    private const val SERIAL = false;
+    private const val SERIAL = true;
 
     // Inicia a classe
     fun init() {

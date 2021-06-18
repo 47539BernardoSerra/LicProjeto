@@ -1,14 +1,15 @@
 TODO:
 Fazer a classe M(Out Of Service)//On it
+Fazer o Serial Receiver
 Fazer os users
 Fazer o File Access
-Fazer o Serial Receiver
 
 
 TOFIX:
 Log não usa File Access
 Tirar as funções javardonas do KBD
 Tirar as funções javardonas do TUI
+Usar o users para a classe M, muito fraco
 
 
 KNOWN BUGS:

@@ -34,7 +34,7 @@ object Users {
         return firstID
     }
 
-    fun removeUser(){
+    fun removeUser(uin:String){
 
     }
 }
