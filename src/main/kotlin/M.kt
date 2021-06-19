@@ -132,7 +132,7 @@ object M {
         }
         FileAccess.clearFile(USERS_FILE)
         for (i in 0 until listOfUsers.size) {
-            FileAccess.writeText(listOfUsers[i], USERS_FILE)
+            FileAccess.writeText(listOfUsers[i]+"\n", USERS_FILE)
         }
     }
 
